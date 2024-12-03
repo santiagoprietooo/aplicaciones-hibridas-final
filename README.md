@@ -1,10 +1,10 @@
-# Parcial1-Hibridas-Martinez-Prieto
-Repositorio del TP 2 de Aplicaciones Hibridas, comision DWM4AP. 
-# Nombre y Apellido de los desarrolladores:
+# Final-Hibridas-Martinez-Prieto
+Repositorio del trabajo final de Aplicaciones Híbridas, comisión DWM4AP. 
+# Apellido y Nombre de los desarrolladores:
 Martínez Franco y Prieto Santiago.
-# Nombre de la materia: 
+# Materia: 
 Aplicaciones Híbridas
-# Nombre del docente:
+# Docente:
 Jonathan Emanuel Cruz
 # Comision: 
 DWM4AP
