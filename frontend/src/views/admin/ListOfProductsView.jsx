@@ -126,7 +126,7 @@ function ListOfProductsView() {
 
                             <div className="flex flex-col items-start gap-2 w-1/6">
                                 <NavLink
-                                    to={`/admin/product_edit/${product._id}`}
+                                    to={`/admin/camiseta_edit/${product._id}`}
                                     className="flex flex-row items-center justify-center gap-3 w-full p-3 bg-slate-300 text-black rounded-lg transition-colors hover:bg-slate-200"
                                 >
                                     <span className="font-semibold">Editar</span>

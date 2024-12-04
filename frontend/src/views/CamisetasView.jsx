@@ -5,20 +5,6 @@ import MainTitle from "../components/MainTitle";
 import ProductCard from "../components/ProductCard";
 
 function ProductsView() {
-    /* let [ recargar2 ] = useState(false);
-    let [ productos2, setProductos2 ] = useState([]);
-
-    useEffect(() => {
-        const getProducts2 = async () => {
-            const resp = await fetch('http://127.0.0.1:3000/api/ropa');
-            const data = await resp.json();
-
-            setProductos2(data.data);
-        }
-        
-        getProducts2();
-    }, [recargar2]); */
-
     let [ recargar ] = useState(false);
     let [ productos, setProductos ] = useState([]);
     let [ productosFiltrados, setProductosFiltrados ] = useState([]);
@@ -129,10 +115,12 @@ function ProductsView() {
                                         <ProductCard
                                             key={product._id}
                                             myId={product._id}
+                                            route={`/camiseta/${product._id}`}
                                             title={product.camiseta}
                                             imgSrc={product.imagen_principal}
                                             categoria={product.categoria}
                                             temporada={product.temporada}
+                                            color={product.color}
                                             precio={product.precio}
                                         />
                                     ))}
@@ -461,7 +449,7 @@ function ProductsView() {
                                     </div>
 
                                     <NavLink
-                                        to={`/product/${product._id}`}
+                                        to={`/camiseta/${product._id}`}
                                         className="p-2 w-full bg-red-600 text-white text-center font-semibold rounded-sm  transition-colors hover:bg-red-700"
                                     >
                                         <span

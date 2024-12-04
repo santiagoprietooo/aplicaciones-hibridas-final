@@ -10,8 +10,10 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 import HomeView from './views/HomeView';
-import ProductsView from './views/ProductsView';
-import ProductDetail from './views/ProductDetail';
+import CamisetasView from './views/CamisetasView';
+import CamisetaDetail from './views/CamisetaDetail';
+import PrendasView from './views/PrendasView';
+import PrendaDetail from './views/PrendaDetail';
 import SignInView from './views/SignInView';
 import LogInView from './views/LogInView';
 
@@ -35,8 +37,10 @@ function App() {
           <Header />
           <Routes>
             <Route path="/"                        element={ <HomeView /> } />
-            <Route path="/products"                element={ <ProductsView /> } />
-            <Route path="/product/:id"             element={ <ProductDetail /> } />
+            <Route path="/camisetas"               element={ <CamisetasView /> } />
+            <Route path="/camiseta/:id"            element={ <CamisetaDetail /> } />
+            <Route path="/prendas"                 element={ <PrendasView /> } />
+            <Route path="/prenda/:id"              element={ <PrendaDetail /> } />
             <Route path="/sign-in"                 element={ <SignInView /> } />
             <Route path="/log-in"                  element={ <LogInView /> } />
 
@@ -45,7 +49,7 @@ function App() {
             <Route path="/admin"                   element={ <AdminRoute> <AdminView /> </AdminRoute>} />
             <Route path="/admin/products_list"     element={ <AdminRoute> <ListOfProductsView /> </AdminRoute>} />
             <Route path="/admin/add_camiseta"      element={ <AdminRoute> <AddCamisetaView /> </AdminRoute>} />
-            <Route path="/admin/product_edit/:id"  element={ <AdminRoute> <EditCamisetaView /> </AdminRoute>} />
+            <Route path="/admin/camiseta_edit/:id" element={ <AdminRoute> <EditCamisetaView /> </AdminRoute>} />
             <Route path="/admin/add_prenda"        element={ <AdminRoute> <AddPrendaView /> </AdminRoute>} />
             <Route path="/admin/prenda_edit/:id"   element={ <AdminRoute> <EditPrendaView /> </AdminRoute>} />
 

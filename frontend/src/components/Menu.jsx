@@ -14,12 +14,14 @@ const adminRoutes = [
 
 const userRoutes = [
     {name : "Inicio",          path : "/",             id : "home"},
-    {name : "Productos",       path : "/products",     id : "products"}
+    {name : "Camisetas",       path : "/camisetas",    id : "camisetas"},
+    {name : "Prendas",         path : "/prendas",      id : "prendas"}
 ]
 
 const defRoutes = [
     {name : "Inicio",          path : "/",             id : "home"},
-    {name : "Productos",       path : "/products",     id : "products"},
+    {name : "Camisetas",       path : "/camisetas",    id : "camisetas"},
+    {name : "Prendas",         path : "/prendas",      id : "prendas"},
     {name : "Iniciar sesión",  path : "/sign-in",      id : "sign-in"},
     {name : "Registrarse",     path : "/log-in",       id : "log-in"}
 ]

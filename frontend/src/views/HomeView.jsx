@@ -44,7 +44,7 @@ function HomeView() {
                             <span>La tienda del mil<span className="text-[#E2211C]">lona</span>rio</span>
                         }/>
 
-                        <p className="text-xl">Bienvenido a nuestra tienda, acá vas a encontrar todos los artículos relacionados al Club Atlético River Plate. Desde camisetas actuales hasta ropa retro, y todo esto con la posibilidad de pagar en la cantidad de cuotas que usted guste. Podés empezar a mirar nuestra página de <NavLink to="/products" className="text-red-400 underline">productos</NavLink> donde vas a encontrar eso que buscas.</p>
+                        <p className="text-xl">Bienvenido a nuestra tienda, acá vas a encontrar todos los artículos relacionados al Club Atlético River Plate. Desde camisetas actuales hasta ropa retro, y todo esto con la posibilidad de pagar en la cantidad de cuotas que usted guste. Podés empezar a mirar nuestra página de <NavLink to="/camisetas" className="text-red-400 underline">productos</NavLink> donde vas a encontrar eso que buscas.</p>
                     </div>
                 </div>
 
@@ -75,7 +75,7 @@ function HomeView() {
 
                                         <div className="flex flex-col items-center gap-1 w-full">
                                             <NavLink
-                                                to={`/product/${product.id}`}
+                                                to={`/camiseta/${product.id}`}
                                                 className="p-2 w-full bg-red-600 text-white text-center font-semibold rounded-sm transition-colors hover:bg-red-700"
                                             >
                                                 <span
