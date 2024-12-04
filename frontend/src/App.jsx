@@ -14,6 +14,8 @@ import CamisetasView from './views/CamisetasView';
 import CamisetaDetail from './views/CamisetaDetail';
 import PrendasView from './views/PrendasView';
 import PrendaDetail from './views/PrendaDetail';
+import PerfilView from './views/PerfilView';
+import EditarPerfilView from './views/EditarPerfilView';
 import SignInView from './views/SignInView';
 import LogInView from './views/LogInView';
 
@@ -43,6 +45,9 @@ function App() {
             <Route path="/prenda/:id"              element={ <PrendaDetail /> } />
             <Route path="/sign-in"                 element={ <SignInView /> } />
             <Route path="/log-in"                  element={ <LogInView /> } />
+
+            <Route path="/perfil/:id"              element={ <PrivateRoute> <PerfilView /> </PrivateRoute>} />
+            <Route path="/perfil/editar/:id"       element={ <PrivateRoute> <EditarPerfilView /> </PrivateRoute>} />
 
             <Route path="/sign-in/to-admin"        element={ <SignInToAdmin /> } />
 

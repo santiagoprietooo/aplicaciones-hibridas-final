@@ -5,7 +5,7 @@ import MainTitle from "../components/MainTitle";
 
 function LoginView() {
     const navigate = useNavigate();
-    const [ formData, setFormData ] = useState({ name: "", email: "", password: "" });
+    const [ formData, setFormData ] = useState({ name: "", photoURL: "", email: "", password: "" });
 
     let [ showPassword, setShowPassword ] = useState(false);
 
@@ -39,6 +39,7 @@ function LoginView() {
 
             setFormData({
                 name: "",
+                photoURL: "",
                 email: "",
                 password: "",
             });
@@ -69,6 +70,20 @@ function LoginView() {
                                 placeholder="Juan"
                                 onChange={handleData}
                                 value={formData.name}
+                                className="p-3 w-full bg-gray-300 rounded-lg outline-none transition-colors placeholder:text-black placeholder:text-opacity-75 focus:bg-gray-100 focus:placeholder:text-opacity-60"
+                            />
+                        </div>
+
+                        <div className="flex flex-col gap-2 w-1/2">
+                            <label htmlFor="photoURL" className="w-max font-semibold">Nombre</label>
+                            <input
+                                type="text"
+                                name="photoURL"
+                                id="photoURL"
+                                autoComplete="off"
+                                placeholder="https://fotoURL.com"
+                                onChange={handleData}
+                                value={formData.photoURL}
                                 className="p-3 w-full bg-gray-300 rounded-lg outline-none transition-colors placeholder:text-black placeholder:text-opacity-75 focus:bg-gray-100 focus:placeholder:text-opacity-60"
                             />
                         </div>

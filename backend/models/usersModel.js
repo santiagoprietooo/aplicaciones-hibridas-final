@@ -14,7 +14,9 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    photoURL: String,
+    bio: String
 });
 
 const User = mongoose.model('User', userSchema);

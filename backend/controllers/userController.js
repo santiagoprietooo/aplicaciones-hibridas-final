@@ -7,16 +7,17 @@ const salt = 10;
 
 async function createUser(req, res) {
     try {
-        const { name, email, password } = req.body;
+        const { name, photoURL, email, password } = req.body;
         const passwordHash = await bcrypt.hash(password, salt);
         
         console.log(passwordHash);
         
-        if(!name || !email || !password) {
+        if( !email || !password ) {
             res.status(401).json({ msg : "Faltan parámetros.", data : {} });
         } else {
             const newUser = new User ({
                 name: name,
+                photoURL: photoURL,
                 email: email,
                 password: passwordHash
             });
@@ -101,11 +102,11 @@ async function deleteUserById(req, res) {
 
 async function updateUserById(req, res) {
     const { id } = req.params;
-    const { name, email, password} = req.body;
+    const { name, email, password, bio, photoURL } = req.body;
 
     try {
         const passwordHash = await bcrypt.hash(password, salt);
-        const user = await User.findByIdAndUpdate(id, { name, email, password: passwordHash }, {new: true});
+        const user = await User.findByIdAndUpdate(id, { name, email, password: passwordHash, bio, photoURL }, {new: true});
 
         if(user){
             res.status(200).json({ msg: "Se actualizó al usuario correctamente.", data: user});
