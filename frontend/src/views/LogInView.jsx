@@ -75,7 +75,7 @@ function LoginView() {
                         </div>
 
                         <div className="flex flex-col gap-2 w-1/2">
-                            <label htmlFor="photoURL" className="w-max font-semibold">Nombre</label>
+                            <label htmlFor="photoURL" className="w-max font-semibold">Foto de perfil</label>
                             <input
                                 type="text"
                                 name="photoURL"

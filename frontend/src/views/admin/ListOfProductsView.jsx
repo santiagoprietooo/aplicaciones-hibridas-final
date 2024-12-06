@@ -8,7 +8,9 @@ import { NavLink } from "react-router-dom";
 function ListOfProductsView() {
     const [ productos, setProductos ] = useState([]);
     const [ productToDelete, setProductToDelete ] = useState(null);
+    const [ prendaToDelete, setPrendaToDelete ] = useState(null);
     let [ modal, setModal ] = useState(false);
+    let [ modal2, setModal2 ] = useState(false);
 
     const getProducts = async () => {
         const endPoint = "http://127.0.0.1:3000/api/camisetas";
@@ -85,6 +87,11 @@ function ListOfProductsView() {
     const showModal = (id) => {
         setModal(modal = !modal);
         setProductToDelete(id);
+    }
+
+    const showModal2 = (id) => {
+        setModal2(modal2 = !modal2);
+        setPrendaToDelete(id);
     }
 
     return(<>
@@ -224,22 +231,22 @@ function ListOfProductsView() {
                                 <button
                                     type="button"
                                     className="flex flex-row items-center justify-center gap-3 w-full p-3 bg-red-600 text-white rounded-lg transition-colors hover:bg-red-500"
-                                    onClick={() => showModal(prenda._id)}
+                                    onClick={() => showModal2(prenda._id)}
                                 >
                                     <span className="font-semibold">Borrar</span>
                                     <Trash className="size-5"/>
                                 </button>
                             </div>
 
-                            <div className={ modal ? "fixed top-0 right-0 bottom-0 left-0 z-20 bg-black bg-opacity-40" : "hidden" }>
+                            <div className={ modal2 ? "fixed top-0 right-0 bottom-0 left-0 z-20 bg-black bg-opacity-40" : "hidden" }>
                                 <div className="absolute bottom-1/2 right-1/2 transform translate-x-1/2 translate-y-1/2 flex flex-col items-center gap-10 w-max p-5 bg-white rounded-lg">
                                     <div className="flex flex-row items-start gap-10">
-                                        <span className="text-lg font-semibold">¿Estás seguro de que querés borrar este producto?</span>
+                                        <span className="text-lg font-semibold">¿Estás seguro de que querés borrar esta prenda?</span>
 
                                         <button
                                             type="button"
                                             className="flex items-center justify-center rounded-lg transition-colors hover:bg-black hover:bg-opacity-10"
-                                            onClick={showModal}
+                                            onClick={showModal2}
                                         >
                                             <X className="size-8"/>
                                         </button>
@@ -248,7 +255,7 @@ function ListOfProductsView() {
                                     <div className="flex flex-row items-center gap-4">
                                         <button
                                             type="button"
-                                            onClick={showModal}
+                                            onClick={showModal2}
                                             className="flex items-center justify-center p-3 bg-neutral-300 font-semibold rounded-lg transition-colors hover:bg-neutral-200"
                                         >
                                             No, volver.
@@ -256,7 +263,7 @@ function ListOfProductsView() {
 
                                         <button
                                             type="button"
-                                            onClick={() => {deletePrendas(productToDelete); showModal()}}
+                                            onClick={() => {deletePrendas(prendaToDelete); showModal2()}}
                                             className="flex items-center justify-center p-3 bg-red-700 text-white font-semibold rounded-lg transition-colors hover:bg-red-600"
                                         >
                                             Sí, borrar.

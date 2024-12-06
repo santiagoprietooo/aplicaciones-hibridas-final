@@ -119,6 +119,7 @@ function ProductsView() {
                                             title={product.prenda}
                                             imgSrc={product.imagen_principal}
                                             temporada={product.temporada}
+                                            color={product.color}
                                             precio={product.precio}
                                         />
                                     ))}

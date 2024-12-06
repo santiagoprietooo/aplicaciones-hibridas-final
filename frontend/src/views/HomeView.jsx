@@ -1,39 +1,33 @@
-import { NavLink } from "react-router-dom";
-import { ShoppingCart, BadgeDollarSign, X } from 'lucide-react';
-import { useState } from "react";
 import MainTitle from "../components/MainTitle";
-
-const popularProducts = [
-    {
-        id : "river-plate-camiseta-titular-2024",
-        title : "Camiseta titular 24/25",
-        image : "Images/Products/Camiseta-Actual/river-plate-camiseta-titular-2024.png",
-        price : 119999
-    },
-    {
-        id : "river-plate-camiseta-alternativa-2024",
-        title : "Camiseta alternativa 24/25",
-        image : "Images/Products/Camiseta-Actual/river-plate-camiseta-suplente-2024.png",
-        price : 119999
-    },
-    {
-        id : "river-plate-campera-rompeviento-2024",
-        title : "Campera Rompeviento 24/25",    
-        image : "Images/Products/river-plate-campera-rompeviento-2024.png",
-        price : 169999
-    }
-]
+import Loader from "../components/Loader";
+import ProductCard from "../components/ProductCard";
+import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 function HomeView() {
-    let [ loginModal, setModal ] = useState(false);
+    const [ productos, setProductos ] = useState(null);
 
-    const activateModal = () => {
-        setModal(true);
-    }
+    useEffect(() => {
+        const getProducts = async () => {
+            const endPoint = "http://127.0.0.1:3000/api/camisetas";
+            const config = {
+                method: 'GET',
+                headers: {'Content-Type' : 'application/json'}
+            }
+            const response = await fetch(endPoint, config);
+    
+            if(!response.ok) {
+                console.error("No se cargaron los productos.");
+            } else {
+                console.log("Acá están los productos.");
+            }
+    
+            const data = await response.json();
+            setProductos(data.data);
+        }
 
-    const hiddenModal = () => {
-        setModal(false);
-    }
+        getProducts();
+    }, []);
 
     return (
         <>
@@ -50,96 +44,33 @@ function HomeView() {
 
                 <main>
                     <div className="flex flex-col justify-center items-center p-4 w-full bg-white">
-                        <h2 className="mb-4 text-black text-2xl font-semibold text-center uppercase">
+                        <h2 className="text-3xl font-bold text-center uppercase">
                             Productos destacados
                         </h2>
 
-                        <div className="flex flex-row items-center justify-evenly gap-4 pb-4">
-                            {
-                                popularProducts.map(product => {
-                                    return <div key={product.id} className="flex flex-col items-center gap-3 p-2 bg-white border-2 border-black rounded-md">
-                                        <h2 className="text-lg text-center font-bold">
-                                            River Plate <br/> {product.title}                                    
-                                        </h2>
-
-                                        <div className="flex flex-col items-center overflow-hidden">
-                                            <img
-                                                src={product.image} alt={product.title}
-                                                className="w-2/3 transform transition-transform duration-300 ease-in-out hover:scale-125"
-                                            />
-                                        </div>
-
-                                        <p className="text-lg">
-                                            <span className="font-semibold">Precio: </span> ${product.price},00
-                                        </p>
-
-                                        <div className="flex flex-col items-center gap-1 w-full">
-                                            <NavLink
-                                                to={`/camiseta/${product.id}`}
-                                                className="p-2 w-full bg-red-600 text-white text-center font-semibold rounded-sm transition-colors hover:bg-red-700"
-                                            >
-                                                <span
-                                                    className="flex flex-row items-center justify-center gap-4"
-                                                >
-                                                    <BadgeDollarSign className="size-5" /> Ver este artículo
-                                                </span>
-                                            </NavLink>
-
-                                            <button
-                                                type="button"
-                                                onClick={activateModal}
-                                                className="p-2 w-full text-center font-semibold rounded-sm transition-colors hover:bg-gray-200"
-                                            >
-                                                <span
-                                                    className="flex flex-row items-center justify-center gap-4"
-                                                >
-                                                    <ShoppingCart className="size-5" /> Agregar al carrito
-                                                </span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                })
-                            }
-                        </div>
+                        {productos == null ?
+                            <div className="flex justify-center p-5">
+                                <Loader />
+                            </div>
+                            :
+                            <div className="grid grid-cols-3 gap-5 w-11/12 p-5">
+                                {productos.slice(0,3).map((product) => (
+                                    <ProductCard
+                                        key={product._id}
+                                        myId={product._id}
+                                        route={`/camiseta/${product._id}`}
+                                        title={product.camiseta}
+                                        imgSrc={product.imagen_principal}
+                                        categoria={product.categoria}
+                                        temporada={product.temporada}
+                                        color={product.color}
+                                        precio={product.precio}
+                                    />
+                                ))}
+                            </div>
+                        }
                     </div>
                 </main>
-
-                <div
-                    className={loginModal ? "fixed top-0 right-0 bottom-0 left-0 z-20 bg-black bg-opacity-40" : "hidden"}
-                >
-                    <div className="flex flex-col items-center justify-center p-5 bg-white rounded-es-xl rounded-ee-xl">
-                        <div className="flex justify-end w-full">
-                            <button
-                                type="button"
-                                onClick={hiddenModal}
-                                className="flex items-center justify-center p-2 rounded-full transition-colors hover:bg-black hover:bg-opacity-15"
-                            >
-                                <X className="size-6 text-black" />
-                            </button>
-                        </div>
-
-                        <div className="text-center mb-8">
-                            <p className="text-2xl font-semibold uppercase">¡No estás registrado!</p>
-                            <p>Para comprar productos tenés que crearte una cuenta o inicar sesión en caso de que ya tengas una.</p>
-                        </div>
-
-                        <div className="flex flex-col items-center gap-2 w-1/2">
-                            <NavLink
-                                to="/log-in"
-                                className="w-full p-2 bg-red-600 text-white text-center font-semibold rounded-md transition-colors hover:bg-red-800"
-                            >
-                                Crear una cuenta
-                            </NavLink>
-
-                            <NavLink
-                                to="/sign-in"
-                                className="w-full p-2 text-center font-semibold rounded-md transition-colors hover:bg-gray-200"
-                            >
-                                Iniciar sesión
-                            </NavLink>
-                        </div>
-                    </div>
-                </div>
             </section>
         </>
     )

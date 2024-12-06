@@ -1,18 +1,19 @@
-import { Link } from "react-router-dom";
+import MainTitle from "../components/MainTitle";
+import { NavLink } from "react-router-dom";
 
 function NotFound() {
     return(
         <>
             <section className="min-h-screen mt-20">
-                <div className="flex flex-col gap-5 p-5">
-                    <h2 className="text-2xl font-semibold uppercase">404 - Hubo un error</h2>
+                <div className="flex flex-col items-center gap-5 p-5">
+                    <MainTitle title="404 - Hubo un error"/>
 
-                    <Link
+                    <NavLink
                         to="/"
-                        className="w-max p-2 bg-[#E2211C] text-white text-xl font-normal rounded-lg"
+                        className="w-max p-2 bg-red-600 text-white text-xl font-semibold rounded-lg transition-colors hover:bg-red-800"
                     >
                         Volver al inicio
-                    </Link>
+                    </NavLink>
                 </div>
             </section>
         </>
