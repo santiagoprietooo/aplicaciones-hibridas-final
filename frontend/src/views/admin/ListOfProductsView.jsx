@@ -1,6 +1,6 @@
 import MainTitle from "../../components/MainTitle";
 import Loader from "../../components/Loader";
-import PriceFormatter from "../../components/priceFormater";
+import PriceFormatter from "../../components/PriceFormater";
 import { useState, useEffect } from "react";
 import { PenBox, Trash, X } from "lucide-react";
 import { NavLink } from "react-router-dom";

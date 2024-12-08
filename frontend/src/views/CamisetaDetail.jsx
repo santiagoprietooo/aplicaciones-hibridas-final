@@ -1,5 +1,5 @@
 import MainTitle from "../components/MainTitle";
-import PriceFormatter from "../components/priceFormater";
+import PriceFormatter from "../components/PriceFormater";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from 'lucide-react';
