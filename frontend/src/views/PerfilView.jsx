@@ -13,7 +13,7 @@ function PerfilView() {
     const navigate = useNavigate();
     
     const getUser = async (id) => {
-        const endPoint = `https://aplicaciones-hibridas-final.vercel.app/api/users/${id}`;
+        const endPoint = `http://127.0.0.1:3000/api/users/${id}`;
         const config = {
             method: "GET",
             headers: {'Content-Type' : 'application/json'}
@@ -34,7 +34,7 @@ function PerfilView() {
 
     async function deleteCuenta(id) {
         try {
-            const endPoint = `https://aplicaciones-hibridas-final.vercel.app/api/users/${id}`;
+            const endPoint = `http://127.0.0.1:3000/api/users/${id}`;
             const config = {
                 method: 'DELETE',
                 headers: {'Content-Type' : 'application/json'}

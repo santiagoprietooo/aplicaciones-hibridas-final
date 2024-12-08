@@ -10,7 +10,7 @@ function ProductDetailView() {
     const { id } = useParams();
 
     const getProducts = async () => {
-        const resp = await fetch("https://aplicaciones-hibridas-final.vercel.app/api/camisetas");
+        const resp = await fetch("http://127.0.0.1:3000/api/camisetas");
         const data = await resp.json();
         const foundProduct = data.data.find((producto) => producto._id === id);
 

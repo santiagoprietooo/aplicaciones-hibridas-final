@@ -25,7 +25,7 @@ function EditProductsView() {
     useEffect(() => {
         async function getProduct(id) {
             try {
-                const endPoint = `https://aplicaciones-hibridas-final.vercel.app/api/camisetas/${id}`;
+                const endPoint = `http://127.0.0.1:3000/api/camisetas/${id}`;
                 const config = {
                     method : 'GET',
                     headers: {'Content-Type' : 'application/json'}
@@ -88,7 +88,7 @@ function EditProductsView() {
         e.preventDefault();
 
         try {
-            const endPoint = `https://aplicaciones-hibridas-final.vercel.app/api/camisetas/${id}`;
+            const endPoint = `http://127.0.0.1:3000/api/camisetas/${id}`;
             const config = {
                 headers: {
                     'Content-Type' : 'application/json'

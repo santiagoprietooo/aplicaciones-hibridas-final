@@ -24,7 +24,7 @@ function EditPrendaView() {
     useEffect(() => {
         async function getProduct(id) {
             try {
-                const endPoint = `https://aplicaciones-hibridas-final.vercel.app/api/ropa/${id}`;
+                const endPoint = `http://127.0.0.1:3000/api/ropa/${id}`;
                 const config = {
                     method: "GET",
                     headers: {'Content-Type' : 'application/json'}
@@ -86,7 +86,7 @@ function EditPrendaView() {
         e.preventDefault();
 
         try {
-            const endPoint = `https://aplicaciones-hibridas-final.vercel.app/api/ropa/${id}`;
+            const endPoint = `http://127.0.0.1:3000/api/ropa/${id}`;
                 const config = {
                     method: "PUT",
                     headers: {'Content-Type' : 'application/json'},

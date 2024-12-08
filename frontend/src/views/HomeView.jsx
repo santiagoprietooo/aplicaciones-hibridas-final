@@ -9,7 +9,7 @@ function HomeView() {
 
     useEffect(() => {
         const getProducts = async () => {
-            const endPoint = "https://aplicaciones-hibridas-final.vercel.app/api/camisetas";
+            const endPoint = "http://127.0.0.1:3000/api/camisetas";
             const config = {
                 method: 'GET',
                 headers: {'Content-Type' : 'application/json'}
