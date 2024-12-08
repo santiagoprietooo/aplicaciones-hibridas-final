@@ -5,7 +5,6 @@ require('dotenv/config')
 
 const port = process.env.PORT;
 const uribd = process.env.URI_BD;
-const path = require('path');
 
 console.log(uribd);
 
@@ -24,12 +23,6 @@ db.once('open', () => {
 app.use(express.json()); 
 app.get('/', (req, res) => {
     res.status(200).send('<h1> CAMISETAS </h1>');
-});
-
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 routerAPI(app);
