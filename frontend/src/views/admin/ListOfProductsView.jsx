@@ -13,7 +13,7 @@ function ListOfProductsView() {
     let [ modal2, setModal2 ] = useState(false);
 
     const getProducts = async () => {
-        const endPoint = "http://127.0.0.1:3000/api/camisetas";
+        const endPoint = "https://aplicaciones-hibridas-final.vercel.app/api/camisetas";
         const config = {
             headers: {'Content-Type' : 'application/json'},
             method: 'GET'
@@ -29,7 +29,7 @@ function ListOfProductsView() {
 
     async function deleteProducts(id) {
         try {
-            const endPoint = `http://127.0.0.1:3000/api/camisetas/${id}`;
+            const endPoint = `https://aplicaciones-hibridas-final.vercel.app/api/camisetas/${id}`;
             const config = {
                 method: 'DELETE',
                 headers: {'Content-Type' : 'application/json'}
@@ -50,7 +50,7 @@ function ListOfProductsView() {
     const [ prendas, setPrendas ] = useState([]);
 
     const getPrendas = async () => {
-        const endPoint = "http://127.0.0.1:3000/api/ropa";
+        const endPoint = "https://aplicaciones-hibridas-final.vercel.app/api/ropa";
         const config = {
             headers: {'Content-Type' : 'application/json'},
             method: 'GET'
@@ -66,7 +66,7 @@ function ListOfProductsView() {
 
     async function deletePrendas(id) {
         try {
-            const endPoint = `http://127.0.0.1:3000/api/ropa/${id}`;
+            const endPoint = `https://aplicaciones-hibridas-final.vercel.app/api/ropa/${id}`;
             const config = {
                 method: 'DELETE',
                 headers: {'Content-Type' : 'application/json'}

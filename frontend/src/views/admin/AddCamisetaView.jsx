@@ -39,7 +39,7 @@ function AddCamisetaView() {
         e.preventDefault();
 
         try {
-            const endPoint = "http://127.0.0.1:3000/api/camisetas/";
+            const endPoint = "https://aplicaciones-hibridas-final.vercel.app/api/camisetas/";
             const config = {
                 headers: {
                     "Content-Type": "application/json",

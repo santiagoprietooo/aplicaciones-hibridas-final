@@ -20,7 +20,7 @@ function LoginView() {
         e.preventDefault();
 
         try {
-            const endPoint = "http://127.0.0.1:3000/api/users/";
+            const endPoint = "https://aplicaciones-hibridas-final.vercel.app/api/users/";
             const config = {
                 headers: {
                     'Content-Type' : 'application/json'

@@ -17,7 +17,7 @@ function EditarPerfilView() {
     useEffect(() => {
         const getUserData = async (id) => {
             try {
-                const endPoint = `http://127.0.0.1:3000/api/users/${id}`;
+                const endPoint = `https://aplicaciones-hibridas-final.vercel.app/api/users/${id}`;
                 const config = {
                     method: 'GET',
                     headers: {'Content-Type' : 'appilcations/json'},
@@ -62,7 +62,7 @@ function EditarPerfilView() {
         e.preventDefault();
 
         try {
-            const endPoint = `http://127.0.0.1:3000/api/users/${id}`;
+            const endPoint = `https://aplicaciones-hibridas-final.vercel.app/api/users/${id}`;
             const config = {
                 headers: {
                     'Content-Type' : 'application/json'

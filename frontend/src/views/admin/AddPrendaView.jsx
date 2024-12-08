@@ -38,7 +38,7 @@ function AddProductsView() {
         e.preventDefault();
 
         try {
-            const endPoint = "http://127.0.0.1:3000/api/ropa/";
+            const endPoint = "https://aplicaciones-hibridas-final.vercel.app/api/ropa/";
             const config = {
                 headers: {
                     'Content-Type' : 'application/json'
