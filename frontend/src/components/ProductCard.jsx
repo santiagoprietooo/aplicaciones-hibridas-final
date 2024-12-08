@@ -1,5 +1,5 @@
 import React from "react";
-import PriceFormatter from "./priceFormater";
+import PriceFormatter from "./PriceFormater";
 import { Heart } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
