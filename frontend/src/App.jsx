@@ -31,41 +31,38 @@ import NotFound from './views/NotFound';
 
 function App() {
   return (
-    <>
-      <Router>
-        <ScrollToTop />
+    <Router>
+      <ScrollToTop />
+        <AuthProvider>
+        <AdminProvider>
+          <Header />
+          <Routes>
+            <Route path="/"                        element={ <HomeView /> } />
+            <Route path="/camisetas"               element={ <CamisetasView /> } />
+            <Route path="/camiseta/:id"            element={ <CamisetaDetail /> } />
+            <Route path="/prendas"                 element={ <PrendasView /> } />
+            <Route path="/prenda/:id"              element={ <PrendaDetail /> } />
+            <Route path="/sign-in"                 element={ <SignInView /> } />
+            <Route path="/log-in"                  element={ <LogInView /> } />
 
-          <AuthProvider>
-          <AdminProvider>
-            <Header />
-            <Routes>
-              <Route path="/"                        element={ <HomeView /> } />
-              <Route path="/camisetas"               element={ <CamisetasView /> } />
-              <Route path="/camiseta/:id"            element={ <CamisetaDetail /> } />
-              <Route path="/prendas"                 element={ <PrendasView /> } />
-              <Route path="/prenda/:id"              element={ <PrendaDetail /> } />
-              <Route path="/sign-in"                 element={ <SignInView /> } />
-              <Route path="/log-in"                  element={ <LogInView /> } />
+            <Route path="/perfil/:id"              element={ <PrivateRoute> <PerfilView /> </PrivateRoute>} />
+            <Route path="/perfil/editar/:id"       element={ <PrivateRoute> <EditarPerfilView /> </PrivateRoute>} />
 
-              <Route path="/perfil/:id"              element={ <PrivateRoute> <PerfilView /> </PrivateRoute>} />
-              <Route path="/perfil/editar/:id"       element={ <PrivateRoute> <EditarPerfilView /> </PrivateRoute>} />
+            <Route path="/sign-in/to-admin"        element={ <SignInToAdmin /> } />
 
-              <Route path="/sign-in/to-admin"        element={ <SignInToAdmin /> } />
+            <Route path="/admin"                   element={ <AdminRoute> <AdminView /> </AdminRoute>} />
+            <Route path="/admin/products_list"     element={ <AdminRoute> <ListOfProductsView /> </AdminRoute>} />
+            <Route path="/admin/add_camiseta"      element={ <AdminRoute> <AddCamisetaView /> </AdminRoute>} />
+            <Route path="/admin/camiseta_edit/:id" element={ <AdminRoute> <EditCamisetaView /> </AdminRoute>} />
+            <Route path="/admin/add_prenda"        element={ <AdminRoute> <AddPrendaView /> </AdminRoute>} />
+            <Route path="/admin/prenda_edit/:id"   element={ <AdminRoute> <EditPrendaView /> </AdminRoute>} />
 
-              <Route path="/admin"                   element={ <AdminRoute> <AdminView /> </AdminRoute>} />
-              <Route path="/admin/products_list"     element={ <AdminRoute> <ListOfProductsView /> </AdminRoute>} />
-              <Route path="/admin/add_camiseta"      element={ <AdminRoute> <AddCamisetaView /> </AdminRoute>} />
-              <Route path="/admin/camiseta_edit/:id" element={ <AdminRoute> <EditCamisetaView /> </AdminRoute>} />
-              <Route path="/admin/add_prenda"        element={ <AdminRoute> <AddPrendaView /> </AdminRoute>} />
-              <Route path="/admin/prenda_edit/:id"   element={ <AdminRoute> <EditPrendaView /> </AdminRoute>} />
-
-              <Route path="*"                        element={ <NotFound />} />
-            </Routes>
-          </AdminProvider>
-          </AuthProvider>
-        <Footer />
-      </Router>
-    </>
+            <Route path="*"                        element={ <NotFound />} />
+          </Routes>
+        </AdminProvider>
+        </AuthProvider>
+      <Footer />
+    </Router>
   );
 }
 
