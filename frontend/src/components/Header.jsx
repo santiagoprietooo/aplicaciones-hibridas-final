@@ -1,6 +1,6 @@
 import React from "react";
 import Menu from "./Menu";
-import Logo from "/Icons/river-plate-badge.png";
+import Logo from "/public/Icons/river-plate-badge.png";
 import { NavLink } from "react-router-dom";
 
 function Header() {
