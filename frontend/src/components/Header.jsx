@@ -1,5 +1,6 @@
 import React from "react";
 import Menu from "./Menu";
+import Logo from "/Icons/river-plate-badge.png";
 import { NavLink } from "react-router-dom";
 
 function Header() {
@@ -9,7 +10,7 @@ function Header() {
                 to="/"
                 className="px-5 rounded-full"
             >
-                <img src="/Icons/river-plate-badge.png" alt="Escudo de River Plate."  className="w-16"/>
+                <img src={Logo} alt="Escudo de River Plate."  className="w-16"/>
             </NavLink>
 
             <Menu />
