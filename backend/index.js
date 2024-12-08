@@ -10,7 +10,20 @@ console.log(uribd);
 
 const routerAPI = require('./routes/index');
 const app = express();
-app.use(cors({ origin: 'https://aplicaciones-hibridas-final.vercel.app' }));
+const allowedOrigins = [
+    'https://aplicaciones-hibridas-final.vercel.app',
+    'https://aplicaciones-hibridas-final-1zp7.vercel.app'
+];
+
+app.use(cors({
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+}));  
 
 mongoose.connect(uribd, {});
 
