@@ -10,7 +10,7 @@ console.log(uribd);
 
 const routerAPI = require('./routes/index');
 const app = express();
-app.use(cors());
+app.use(cors({ origin: 'https://aplicaciones-hibridas-final.vercel.app' }));
 
 mongoose.connect(uribd, {});
 
