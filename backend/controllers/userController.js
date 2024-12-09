@@ -7,7 +7,7 @@ const salt = 10;
 
 async function createUser(req, res) {
     try {
-        const { name, photoURL, email, password } = req.body;
+        const { name, email, photoURL, password, bio } = req.body;
         const passwordHash = await bcrypt.hash(password, salt);
         
         console.log(passwordHash);
@@ -17,9 +17,10 @@ async function createUser(req, res) {
         } else {
             const newUser = new User ({
                 name: name,
-                photoURL: photoURL,
                 email: email,
-                password: passwordHash
+                password: passwordHash,
+                photoURL: photoURL,
+                bio: bio
             });
 
             await newUser.save();
@@ -48,7 +49,7 @@ async function login(req, res) {
         }
 
         const token = jwt.sign({ id: user._id, email: user.email }, secretKey, { expiresIn: "1h" });
-        res.status(200).json({ msg: "Se inició sesión con éxito", user : {id: user._id, name: user.name, email: email}, token });
+        res.status(200).json({ msg: "Se inició sesión con éxito", user : {id: user._id, name: user.name, email: email, photoURL: user.photoURL, bio: user.bio }, token });
     } catch (error) {
         console.error(error);
         res.status(500).json({ msg: error, data: [] });
@@ -106,7 +107,7 @@ async function updateUserById(req, res) {
 
     try {
         const passwordHash = await bcrypt.hash(password, salt);
-        const user = await User.findByIdAndUpdate(id, { name, email, password: passwordHash, bio, photoURL }, {new: true});
+        const user = await User.findByIdAndUpdate(id, { name, email, /* password: passwordHash, */ bio, photoURL }, {new: true});
 
         if(user){
             res.status(200).json({ msg: "Se actualizó al usuario correctamente.", data: user});
